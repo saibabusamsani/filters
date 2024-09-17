@@ -9,14 +9,15 @@ import Academic from "./academic";
 import Graduation from "./graduation";
 
 
-import { options } from "../data/data";
+import { options, toGetAllData } from "../data/data";
 import Experience from "./experience";
 
 
 
 
-const  Block3=({setAllData,allData})=>
+const  Block3=({setAllData,allData,setFilterData,filterData})=>
 {
+  
   
     return(
         <div className="block33">
@@ -64,8 +65,10 @@ const  Block3=({setAllData,allData})=>
 
         </div>
         <div className="b3btn">
-                <button className="btn1"  >Clear</button>
-                <button className="btn2" >Show results</button>
+                <button className="btn1"  onClick={()=>setFilterData(toGetAllData)} >Clear</button>
+                <button className="btn2" onClick={()=>{
+                    setFilterData(allData);
+                }}>Show results</button>
             </div>
         </div>
     )

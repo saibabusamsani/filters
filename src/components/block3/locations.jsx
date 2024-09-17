@@ -87,19 +87,23 @@ export const customStyles = {
 
   const [selectedOptions, setSelectedOptions] = useState([]);
 
+
   const handleChange = (selected) => {
     setSelectedOptions(selected);
 
 
     const data=selected.map((i)=> i.value);
 
-    const filterData=allData.filter((applicant)=>{
+   const filterData=allData.filter((applicant)=>{
       return data.some((i)=>i.toLowerCase()===applicant.location.toLowerCase())
-
+      
     })
+    
     setAllData(filterData);
+
     
   };
+
 
   return (
     <div className='options'>

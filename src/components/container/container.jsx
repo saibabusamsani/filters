@@ -14,18 +14,16 @@ function Container()
 
 
     const[allData,setAllData]=useState(toGetAllData);
-  
+    const[filterData,setFilterData]=useState(toGetAllData);
 
-  
+  console.log(filterData)
     return(
        <div className="container">
             <Header></Header>
             <div className="body">
                 <Block1 ></Block1>
-                <Block2 allData={allData} ></Block2>
-                <Block3  setAllData={setAllData} allData ={allData} 
-
-        
+                <Block2 allData={filterData} ></Block2>
+                <Block3  setAllData={setAllData} allData ={allData} setFilterData={setFilterData} filterData={filterData}
             ></Block3>
             </div>
        </div>
