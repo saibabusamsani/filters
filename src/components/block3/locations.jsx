@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import Select from 'react-select';
+import { toGetAllData } from '../data/data';
 
 export const customStyles = {
   overflowY: 'auto',   
@@ -94,12 +95,25 @@ export const customStyles = {
 
     const data=selected.map((i)=> i.value);
 
-   const filterData=allData.filter((applicant)=>{
-      return data.some((i)=>i.toLowerCase()===applicant.location.toLowerCase())
-      
-    })
-    
-    setAllData(filterData);
+    function addUniqueObject(arr, obj) {
+      const exists = arr.some(item => item.id === obj.id);
+      if (!exists) {
+          arr.push(obj);
+      }
+  }
+  
+      let finalData=[];
+          for(const applicant of toGetAllData)
+          {
+            // [hyd,mumbai].some(hyd)
+            if(data.some((i)=>i.toLowerCase().includes(applicant.location.toLowerCase()))  )
+            {
+  
+              addUniqueObject(finalData,applicant);
+            }
+          }
+          setAllData(finalData);
+        
 
     
   };

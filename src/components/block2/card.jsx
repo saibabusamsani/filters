@@ -6,14 +6,15 @@ import { GrNotes } from "react-icons/gr";
 import Dropdown from "./dropBtn";
 import { IoBag } from "react-icons/io5";
 import { FaLocationDot } from "react-icons/fa6";
-import { FaToolbox } from "react-icons/fa";
+
 import { Link } from "react-router-dom";
 import image from "../Gallery/kohli.jpg"
 import { RiSaveFill } from "react-icons/ri";
 import { useState } from "react";
+import { MdAccountBalanceWallet } from "react-icons/md";
 import Cmt from "./comment";
 
-                        //     const checkGender=genders.includes(applicant.Gender)
+                        
 function Card({toGetAll})
     {
         let [show,setShow]=useState(false);
@@ -48,26 +49,32 @@ function Card({toGetAll})
                                            <div>
                                                     <h5 style={{fontWeight:"600",fontFamily:"Inter"}}>{applicant.name}</h5>
                                                     <div className="card22">
-                                                        <p ><IoBag className="iconStyle"/>{applicant.experience}yrs 0m</p>
-                                                        <p><FaToolbox className="iconStyle"/> ₹ 27.50 LACS</p>
-                                                        <p><FaLocationDot className="iconStyle"/>{applicant.location}</p>
+                                                        <p ><IoBag className="iconStyle"/>{applicant.experience} yrs 0m</p>
+                                                        <p><MdAccountBalanceWallet className="iconStyle"/>  ₹ 27.50 LACS</p>
+                                                        <p><FaLocationDot className="iconStyle"/> {applicant.location}</p>
                                                     </div>
                                             </div>
                                         </div>
                     
                     
                                         <div className="details">
+
+                                              <div style={{display:"flex",justifyContent:"space-between"}}>
+                                                        <p className="av">Current</p>
+                                                        <p className="avp">Software developer at ISOFT Ltd noida working on wordpress</p>
+                                                </div>  
+                                              
                                                 <div style={{display:"flex",justifyContent:"space-between"}}>
-                                                    <p className="ed">EDUCATION</p>
+                                                    <p className="ed">Education</p>
                                                     <div style={{width:"80%"}}>
-                                                        <p style={{fontWeight:"600"}}>{applicant.education},({applicant.graduationYear})</p>
-                                                        <p style={{marginBottom:"10px",fontSize:"15px"}}>Asia,Pacific institute of information Techonology,Panipat</p>
+                                                        <p style={{fontWeight:"600",fontSize:"14px",transform:"translateX(-8px)"}}>{applicant.education},({applicant.graduationYear})</p>
+                                             
                     
                                                     </div>
                                                 </div>
                                             
                                                 <div style={{display:"flex",justifyContent:"space-between"}}>
-                                                    <p className="es">SKILLS<IoIosInformationCircleOutline className="icon"/></p>
+                                                    <p className="es">Skills<IoIosInformationCircleOutline className="icon"/></p>
                                                     <ul className="ul-skill">
                                                         {
                                                         
@@ -80,14 +87,18 @@ function Card({toGetAll})
                     
                                                     </ul>
                                                 </div>
+                                                <div style={{display:"flex",justifyContent:"space-between"}}>
+                                                        <p className="av">Pre.locations</p>
+                                                        <p className="avp">Vizag, Hyderabad, Bangalore</p>
+                                                </div>   
 
                                                 <div style={{display:"flex",justifyContent:"space-between"}}>
-                                                        <p className="cl">COVER LETTER<IoIosInformationCircleOutline className="icon"/></p>
+                                                        <p className="cl">Cover letter</p>
                                                         <p className="cover-desc">I have capable skils on this to do the job and I also have an experience in internship in digital marketing.</p>
                                                 </div>
 
                                                 <div style={{display:"flex",justifyContent:"space-between"}}>
-                                                        <p className="av">AVAILABILITY<IoIosInformationCircleOutline  className="icon"/></p>
+                                                        <p className="av">Aavailability</p>
                                                         <p className="avp">Yes, I am available to join immediately. And can relocate to Hyderabad.</p>
                                                 </div>        
                                             

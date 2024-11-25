@@ -2,6 +2,7 @@ import { useState } from "react";
 import { customStyles } from "./locations";
 
 import Select from 'react-select';
+import { toGetAllData } from "../data/data";
 const Graduation= ({year,setAllData,allData}) => {
     
 
@@ -18,13 +19,20 @@ const Graduation= ({year,setAllData,allData}) => {
    const handleChange = (selected) => {
      setSelectedOptions(selected);
     
-    
+     const years=  selected.map((i)=>i.value);
 
-
-     let years=selected.map((i)=>i.value);
-
-     let update=allData.filter((applicant)=>{
-
+     function addUniqueObject(arr, obj) {
+      const exists = arr.some(item => item.id === obj.id);
+      if (!exists) {
+          arr.push(obj);
+      }
+  }
+  
+  
+     let finalData=[];
+     for(const applicant of toGetAllData)
+     {
+        
        const checkGraduationYear=years.some((i)=>{
                             if(applicant.graduationYear.includes(i) ) return true;
                             else if(i.includes("2021") ) 
@@ -34,11 +42,22 @@ const Graduation= ({year,setAllData,allData}) => {
                                 return false;
                            
                         });
-          return checkGraduationYear;
-     });
-  
-     setAllData(update);
+      
 
+    
+       if(checkGraduationYear)
+       {
+  
+         addUniqueObject(finalData,applicant);
+       }
+     }
+     
+     setAllData(finalData
+     )
+    
+
+
+  
    };
  
    return (

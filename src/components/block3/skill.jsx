@@ -2,6 +2,7 @@ import { useState } from "react";
 import { customStyles } from "./locations";
 
 import Select from 'react-select';
+import { toGetAllData } from "../data/data";
 const Skill= ({skill,setAllData,allData}) => {
 
  
@@ -17,14 +18,32 @@ const Skill= ({skill,setAllData,allData}) => {
    const handleChange = (selected) => {
      setSelectedOptions(selected);
 
-   const skill=  selected.map((i)=>i.value);
 
-  const update=allData.filter((applicant)=>{
-        const checkSkills=applicant.skills.some(i=>skill.includes(i));
-        return checkSkills;
-   });
-   setAllData(update);
+   const skills=  selected.map((i)=>i.value);
+
+   function addUniqueObject(arr, obj) {
+    const exists = arr.some(item => item.id === obj.id);
+    if (!exists) {
+        arr.push(obj);
+    }
+}
+
+
+   let finalData=[];
+   for(const applicant of toGetAllData)
+   {
+    //     skills          applicant.skills
+     // [java,spring] = [javascript,java]
+    let applicantSkills=applicant.skills.map(i=>i.toLowerCase());
+     if(skills.some((i)=>applicantSkills.includes(i.toLowerCase())))
+     {
+
+       addUniqueObject(finalData,applicant);
+     }
+   }
    
+   setAllData(finalData
+   )
 
    };
  

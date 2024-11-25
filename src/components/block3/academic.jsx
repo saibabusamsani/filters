@@ -2,6 +2,7 @@ import { useState } from "react";
 import { customStyles } from "./locations";
 
 import Select from 'react-select';
+import { toGetAllData } from "../data/data";
 const Academic= ({background,setAllData,allData}) => {
 
  
@@ -16,13 +17,34 @@ const Academic= ({background,setAllData,allData}) => {
  
    const handleChange = (selected) => {
      setSelectedOptions(selected);
-     let academicBackgrounds=selected.map((i)=>i.value)
-     let update=allData.filter((applicant)=>{
-             const checkBackGround=  academicBackgrounds.some((i)=>applicant.education.toLowerCase().includes(i.toLowerCase())) ;
-             return checkBackGround;
-     })
 
-     setAllData(update)
+     
+     let academicBackgrounds=selected.map((i)=>i.value);
+    
+
+    function addUniqueObject(arr, obj) {
+      const exists = arr.some(item => item.id === obj.id);
+      if (!exists) {
+          arr.push(obj);
+      }
+  }
+  
+      let finalData=[];
+          for(const applicant of toGetAllData)
+          {
+            
+            if(academicBackgrounds.some((i)=>applicant.education.toLowerCase().includes(i.toLowerCase())) )
+            {
+  
+              addUniqueObject(finalData,applicant);
+            }
+          }
+          setAllData(finalData);
+
+
+  
+
+  
     
    };
  

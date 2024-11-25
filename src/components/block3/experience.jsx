@@ -5,7 +5,7 @@ const Experience = () => {
  
   const [scrollValue, setScrollValue] = useState(1);
 
-  
+
   const handleScroll = (event) => {
     setScrollValue(Number(event.target.value)); 
   };
